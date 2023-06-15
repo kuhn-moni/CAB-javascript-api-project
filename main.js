@@ -27,26 +27,24 @@ for (let i = 0; i < data.length; i++) {
   const tdCity = document.createElement("td");
   tdCity.innerText = data[i].city;
 
-  const tdConference = document.createElement("td");
+  let tdConference = document.createElement("td");
   tdConference.innerText = data[i].conference;
 
   const tdDivision = document.createElement("td");
-  tdConference.innerText = data[i].division;
+  tdDivision.innerText = data[i].division;
 
   const tdAbbreviation = document.createElement("td");
-  tdConference.innerText = data[i].abbreviation;
+  tdAbbreviation.innerText = data[i].abbreviation;
 
-  console.log(data[i].abbreviation);
-
-  //   const tdFname = document.createElement("td");
-  //   tdConference.innerText = data[i].full_name;
+  const tdFname = document.createElement("td");
+  tdFname.innerText = data[i].full_name;
 
   tr.appendChild(tdName);
   tr.appendChild(tdCity);
-  tr.appendChild(tdConference);
+  tr.append(tdConference);
   tr.appendChild(tdDivision);
   tr.appendChild(tdAbbreviation);
-  //   tr.appendChild(tdName);
+  tr.appendChild(tdFname);
 
   tBody.appendChild(tr);
 }
