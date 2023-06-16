@@ -41,10 +41,15 @@ for (let i = 0; i < data.length; i++) {
 
   tr.appendChild(tdName);
   tr.appendChild(tdCity);
-  tr.append(tdConference);
+  tr.appendChild(tdConference);
   tr.appendChild(tdDivision);
   tr.appendChild(tdAbbreviation);
   tr.appendChild(tdFname);
 
   tBody.appendChild(tr);
+}
+
+function filterObjects(c) {
+  let x, i;
+  x = document.get;
 }

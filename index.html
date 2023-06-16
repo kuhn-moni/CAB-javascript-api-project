@@ -13,14 +13,12 @@
   </head>
   <body>
     <h1 class="text-center">NBA teams</h1>
-<form action="/action_page.php">
-  <p>Please select your conference</p>
-  <input type="radio" value="All">
-  <label for="ALL">ALL</label><br>
-  <input type="radio" value="East">
-  <label for="East">Eastern Conference</label><br>
-  <input type="radio" value="West">
-  <label for="West">Western Conference</label>
+
+    <div id="buttons">
+      <button class="btn">Show All</button>
+      <button class="btn">Eastern Conference</button>
+      <button class="btn">Western Conference</button>
+    </div>
 
     <section id="team-container">
       <table id="tableHeader" class="table table-striped" style="width: 100%">
@@ -34,16 +32,7 @@
             <th>Name</th>
           </tr>
         </thead>
-        <tbody id="tableBody">
-          <!-- <tr>
-            <td>Atlanta Hawks</td>
-            <td>Atlanta</td>
-            <td>East</td>
-            <td>South East</td>
-            <td>ATL</td>
-            <td>Hawks</td>
-          </tr> -->
-        </tbody>
+        <tbody id="tableBody"></tbody>
         <tfoot></tfoot>
       </table>
     </section>
