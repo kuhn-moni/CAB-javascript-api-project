@@ -20,25 +20,6 @@ const getAllPlayers = () => {
 const createPlayerTable = (playersData) => {
   let table = document.getElementById("playerTable");
   console.log("players data table", playersData);
-  //   table.innerText = "";
-
-  //   for (let i = 0; i < playersData.length; i++) {
-  //     let row = document.createElement("tr");
-  //     table.appendChild(row);
-
-  //     let column = document.createElement("td");
-  //     column.innerText = playersData[i].first_name;
-  //     row.appendChild(column);
-
-  //     let column2 = document.createElement("td");
-  //     column2.innerText = playersData[i].last_name;
-  //     row.appendChild(column2);
-
-  //     let column3 = document.createElement("td");
-
-  //     column3.innerText = playersData[i].position;
-  //     row.appendChild(column3);
-  //   }
 
   playersData.forEach((player) => {
     let row = document.createElement("tr");
@@ -55,6 +36,14 @@ const createPlayerTable = (playersData) => {
     let column3 = document.createElement("td");
     column3.innerText = player.position;
     row.appendChild(column3);
+
+    let column4 = document.createElement("td");
+    column4.innerText = player.team.full_name;
+    row.appendChild(column4);
+
+    let column5 = document.createElement("td");
+    column5.innerText = player.id;
+    row.appendChild(column5);
   });
 };
 
