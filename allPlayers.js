@@ -88,6 +88,18 @@ function controller(playersData) {
   //   setEventListeners(playersData);
   // set event listeners
 }
+// *handleClickEvent - takes the click and process it to an action
+const handClick = (event) => {
+  const playerIdValue = event.target.value;
+  console.log("event", playerIdValue);
+};
+
+// *event listener added for show more
+// const addEventListeners = (playersData) => {
+//   console.log("in event listener", playersData);
+//   const showMoreBtn = document.getElementsByClassName("showMoreBtn");
+//   console.log(showMoreBtn);
+// };
 
 getAllPlayers();
 
@@ -103,14 +115,3 @@ getAllPlayers();
 // *URL FOR PLAYERS SEASON AVERAGE
 // let averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${id}`;
 // let id = 117;
-
-const handClick = (event) => {
-  console.log("event", event);
-};
-
-// *event listener added for show more
-const addEventListeners = (playersData) => {
-  console.log("in event listener", playersData);
-  const showMoreBtn = document.getElementsByClassName("showMoreBtn");
-  console.log(showMoreBtn);
-};
