@@ -48,3 +48,28 @@
 //   tBody.appendChild(tr);
 // }
 // -------------------------------------------------//
+
+// *PLAYER TABLE DATA
+// const createPlayerTable = (playersData) => {
+//   let table = document.getElementById("playerTable");
+//     console.log("players data table", playersData);
+// //*for loop alternative
+//     table.innerText = "";
+
+//     for (let i = 0; i < playersData.length; i++) {
+//       let row = document.createElement("tr");
+//       table.appendChild(row);
+
+//       let column = document.createElement("td");
+//       column.innerText = playersData[i].first_name;
+//       row.appendChild(column);
+
+//       let column2 = document.createElement("td");
+//       column2.innerText = playersData[i].last_name;
+//       row.appendChild(column2);
+
+//       let column3 = document.createElement("td");
+
+//       column3.innerText = playersData[i].position;
+//       row.appendChild(column3);
+//     }

@@ -16,40 +16,6 @@ const getAllTeams = () => {
     });
 };
 
-// *TEAM TABLE DATA
-// const createTeamTable = (teamData) => {
-//   let table = document.getElementById("teamTable");
-//   console.log("team data table", teamData);
-//   table.innerText = "";
-
-//   for (let i = 0; i < teamData.length; i++) {
-//     let row = document.createElement("tr");
-//     table.appendChild(row);
-
-//     let column = document.createElement("td");
-//     column.innerText = teamData[i].name;
-//     row.appendChild(column);
-
-//     let column2 = document.createElement("td");
-//     column2.innerText = teamData[i].city;
-//     row.appendChild(column2);
-
-//     let column3 = document.createElement("td");
-
-//     column3.innerText = teamData[i].conference;
-//     row.appendChild(column3);
-//   }
-// };
-
-// !STOP HERE
-
-// *RAUL example - once function is declared, you must run the function at the bottom
-// const doSometing = () => {
-//   console.log("doing something");
-// };
-
-// document.getElementById("button").addEventListener("click", doSometing);
-
 //* 2 function for creating table and dropdown
 
 // *TEAM TABLE DATA
