@@ -91,10 +91,10 @@ function controller(playersData) {
 // *handleClickEvent - takes the click and process it to an action
 const handClick = (event) => {
   const playerIdValue = event.target.value;
-  console.log("event", playerIdValue);
+  console.log("ID", playerIdValue);
 };
 
-// *event listener added for show more
+// *event listener added for show more - THIS IS ALREADY ADDED IN LOOP
 // const addEventListeners = (playersData) => {
 //   console.log("in event listener", playersData);
 //   const showMoreBtn = document.getElementsByClassName("showMoreBtn");
