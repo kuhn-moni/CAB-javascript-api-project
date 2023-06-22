@@ -12,4 +12,41 @@ body {
   background-color: black;
   color: whitesmoke;
   padding: 50px 30px;
+  text-align: center;
+}
+
+.hero:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(to left, blue, red);
+}
+
+.hero h1 {
+  font-weight: normal;
+  font-size: 2.5rem;
+  margin: 0;
+  padding-bottom: 0.5rem;
+}
+
+.hero h2 {
+  font-weight: lighter;
+  font-size: 1rem;
+}
+
+.filter-nav {
+  display: flex;
+  justify-content: center;
+}
+
+.filter-nav a {
+  text-decoration: none;
+  padding: 7px;
+  color: rgb(0, 0, 255);
+  border: 1px solid rgb(56, 145, 255);
+  border-radius: 4px;
+  margin: 3px;
 }
