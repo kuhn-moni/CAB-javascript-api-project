@@ -14,7 +14,10 @@
   </head>
 
   <body>
-    <h1 class="text-center">NBA teams</h1>
+    <div class="hero">
+      <h1>NBA teams</h1>
+      <h2>Here is where all current NBA teams are displayed</h2>
+    </div>
 
     <!-- *NAVIGATION BAR -->
     <nav class="dropdown">
@@ -24,11 +27,11 @@
         <a href="/Pages/playerslist.html">List of Players</a>
       </nav>
     </nav>
-
-    <div id="buttons">
-      <button class="btn">Show All</button>
-      <button class="btn">Eastern Conference</button>
-      <button class="btn">Western Conference</button>
+    <!-- *FILTER FUNCTION FOR EAST AND WEST CONF -->
+    <div class="filter-nav">
+      <a href="#" data-filter="all"><button>Show All</button></a>
+      <a href="#" data-filter="East"><button>Eastern Conference</button></a>
+      <a href="#" data-filter="West"><button>Western Conference</button></a>
     </div>
 
     <!--*TABLE DATA FOR TEAMS -->

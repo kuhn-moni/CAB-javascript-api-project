@@ -46,7 +46,7 @@ const createTeamTable = (teamData) => {
     row.appendChild(column5);
 
     let column6 = document.createElement("td");
-    column6.innerText = team.name;
+    column6.innerText = team.full_name;
     row.appendChild(column6);
   });
 };
@@ -58,4 +58,30 @@ function controller(teamData) {
   createTeamTable(teamData);
 }
 
+const filterButtons = document.querySelectorAll(".filter-nav a");
+filterButtons.forEach((ele) => {
+  ele.addEventListener("click", (e) => handleFilterClick(e));
+});
+
+function handleFilterClick(e) {
+  let target = e.target;
+
+  e.preventDefault(); //* THIS SECTION IS ONLY FOR CSS - REFRER TO 53MIN IN VID
+  filterButtons.forEach((ele) => {
+    ele.classList.remove("active");
+  });
+  target.classList.add("active");
+
+  filterConf(target.dataset.filter);
+}
+
 getAllTeams();
+
+// 1 Team page should have filter button between EAST & WEST & SHOW ALL
+// 2 when full_name of team is clicked - takes me to List of players PAGE
+// 3 List of players page will display filtered players that are on the selected team
+// 4 to see season avg of player - you select "SHOW MORE" btn to display a POP UP of their 2022-23 season averages.
+//     4.1 ideally with a picture of them too
+
+// https://www.youtube.com/watch?v=S2CxPw-crU8
+//     @47min for filter

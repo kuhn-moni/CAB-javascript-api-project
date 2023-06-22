@@ -1,0 +1,15 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Knockout Wide, sans-serif;
+}
+
+.hero {
+  background-color: black;
+  color: whitesmoke;
+  padding: 50px 30px;
+}
