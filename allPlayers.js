@@ -82,11 +82,6 @@ function controller(playersData) {
   createPlayerTable(playersData);
   addEventListeners(playersData);
   console.count;
-  //generate DropDown filter options
-  //   createDropDown(playersData);
-  //create filter functions
-  //   setEventListeners(playersData);
-  // set event listeners
 }
 // *handleClickEvent - takes the click and process it to an action
 const handClick = (event) => {
