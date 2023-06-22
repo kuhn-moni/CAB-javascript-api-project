@@ -1,4 +1,4 @@
-// *FETCHING THE DATA
+// * 1 FETCHING THE DATA
 
 const getAllPlayers = () => {
   const url = "https://www.balldontlie.io/api/v1/stats?seasons[]=2022";
@@ -16,7 +16,7 @@ const getAllPlayers = () => {
     });
 };
 
-// *PLAYER TABLE DATA
+// * 2 PLAYER TABLE DATA
 const createPlayerTable = (playersData) => {
   let table = document.getElementById("playerTable");
 
@@ -51,7 +51,7 @@ const createPlayerTable = (playersData) => {
     //   player.player.id
     // );
     showMoreBtn.value = player.player.id;
-    console.log("showMoreBtn.value =", showMoreBtn.value);
+    // console.log("showMoreBtn.value =", showMoreBtn.value); //!HERE IS ALL PLAYER ID TO BE SHOWN ON CLG
     showMoreBtn.innerText = "Show More";
     showMoreBtn.addEventListener("click", handClick);
 
@@ -60,19 +60,9 @@ const createPlayerTable = (playersData) => {
   });
 };
 const btn = document.getElementsByClassName("showMoreBtn");
-console.log("Player ID :>> ", btn);
+// console.log("Player ID :>> ", btn);
 
-//* 3 GENERATE DROP DOWN
-// const createDropDown = (playersData) => {
-//   //   console.log("games in CreateDropdownFunction", playersData);
-//   const dropdown = document.getElementById("leagueDropdown");
-
-//   const competitionsArray = playersData.map((playersData) => {
-//     return playersData.last_name;
-//   });
-// };
-
-//* 4 MAKE CONTROLLER FUNCTION
+//* 3 MAKE CONTROLLER FUNCTION
 
 function controller(playersData) {
   console.log("controllers", playersData);
@@ -83,18 +73,31 @@ function controller(playersData) {
   addEventListeners(playersData);
   console.count;
 }
+
+// * 4 URL FOR PLAYERS SEASON AVERAGE
+
+const getPlayersAvg = (playerIdValue) => {
+  const averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerIdValue}`;
+  fetch(averagesUrl)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      const playersAvg = result.data;
+      console.log("AVERAGES :>> ", playersAvg);
+      controller(playersAvg);
+    })
+    .catch((error) => {
+      console.log("error :>> ", error);
+    });
+};
+
 // *handleClickEvent - takes the click and process it to an action
 const handClick = (event) => {
   const playerIdValue = event.target.value;
   console.log("ID", playerIdValue);
+  getPlayersAvg(playerIdValue);
 };
-
-// *event listener added for show more - THIS IS ALREADY ADDED IN LOOP
-// const addEventListeners = (playersData) => {
-//   console.log("in event listener", playersData);
-//   const showMoreBtn = document.getElementsByClassName("showMoreBtn");
-//   console.log(showMoreBtn);
-// };
 
 getAllPlayers();
 
@@ -106,7 +109,3 @@ getAllPlayers();
 // add eventlisteners to each button - onlcick event.pass hanlde function as callback
 // this is what i will pass as a callback
 // from here, event.target.value must be made into variable which is then placed at the end of the season average URL
-
-// *URL FOR PLAYERS SEASON AVERAGE
-// let averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${id}`;
-// let id = 117;
