@@ -2,6 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
+  background-color: whitesmoke;
 }
 
 body {
@@ -9,7 +10,7 @@ body {
 }
 
 .hero {
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   color: whitesmoke;
   padding: 50px 30px;
   text-align: center;
@@ -49,4 +50,38 @@ body {
   border: 1px solid rgb(56, 145, 255);
   border-radius: 4px;
   margin: 3px;
+  margin-bottom: 10px;
+}
+
+.teams {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.team-cards {
+  display: grid;
+  grid-template-columns: 200px 1fr 1fr;
+  background-color: white;
+  border-radius: 60px;
+}
+
+.team-card-logo {
+  order: 1;
+  grid-row: 1;
+}
+
+.team-card-logo {
+  width: 100%;
+}
+
+.team-card-text {
+  padding: 20px 25px;
+}
+
+.primary-btn {
+  background: linear-gradient(orange, red);
+  padding: 8px;
+  color: white;
+  border-radius: 10px;
+  text-decoration: none;
 }

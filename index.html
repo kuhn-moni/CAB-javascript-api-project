@@ -36,21 +36,27 @@
     </div>
 
     <!-- *TEAM CARDS  -->
-    <div class="teams">
-      <!-- *duplicate me -->
+    <div class="teams"></div>
+
+    <template id="team-card">
       <div class="team-cards">
-        <div class="team-card-text"></div>
-        <div class="team-card-logo"></div>
-        <h3>ATLANTA HAWKS</h3>
-        <small
-          ><span class="city">Atlanta</span>-<span class="conference">East</span
-          >-<span class="abbreviation">ATL</span></small
-        >
-        <a href="/Pages/playerslist.html" class="primary-btn">Atlanta Hawks</a>
-        <img src="/Assets/team logos/ATL.svg" alt="ATL" />
+        <div class="team-card-text">
+          <h3>Atlanta Hawks</h3>
+          <small
+            ><span class="city">Atlanta</span>-<span class="conference"
+              >East</span
+            >-<span class="abbreviation">ATL</span>-<span class="division"
+              >Southeast</span
+            >-<a href="/Pages/playerslist.html" class="primary-btn"
+              >Current Players</a
+            ></small
+          >
+        </div>
+        <div class="team-card-logo">
+          <img src="/Assets/team logos/ATL.svg" alt="ATL" />
+        </div>
       </div>
-      <!-- *end duplicating me -->
-    </div>
+    </template>
 
     <!--*TABLE DATA FOR TEAMS -->
     <section id="team-container">

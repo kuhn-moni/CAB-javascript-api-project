@@ -8,7 +8,7 @@ const getAllTeams = () => {
     })
     .then((result) => {
       const teamData = result.data;
-      console.log("games :>> ", teamData);
+      console.log("", teamData);
       controller(teamData);
     })
     .catch((error) => {
