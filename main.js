@@ -16,78 +16,64 @@ const getAllTeams = () => {
     });
 };
 
-getAllTeams();
+// *TEAM TABLE DATA
+const createTeamTable = (teamData) => {
+  let table = document.getElementById("teamTable");
+  teamData.forEach((team, i) => {
+    let row = document.createElement("tr");
+    table.appendChild(row);
 
-//* 2 function for creating table and dropdown
+    let column = document.createElement("td");
+    column.innerText = team.name;
+    row.appendChild(column);
 
-// // *TEAM TABLE DATA
-// const createTeamTable = (teamData) => {
-//   let table = document.getElementById("teamTable");
-//   teamData.forEach((team, i) => {
-//     let row = document.createElement("tr");
-//     table.appendChild(row);
+    let column2 = document.createElement("td");
+    column2.innerText = team.city;
+    row.appendChild(column2);
 
-//     let column = document.createElement("td");
-//     column.innerText = team.name;
-//     row.appendChild(column);
+    let column3 = document.createElement("td");
+    column3.innerText = team.conference;
+    row.appendChild(column3);
 
-//     let column2 = document.createElement("td");
-//     column2.innerText = team.city;
-//     row.appendChild(column2);
+    let column4 = document.createElement("td");
+    column4.innerText = team.division;
+    row.appendChild(column4);
 
-//     let column3 = document.createElement("td");
-//     column3.innerText = team.conference;
-//     row.appendChild(column3);
+    let column5 = document.createElement("td");
+    column5.innerText = team.abbreviation;
+    row.appendChild(column5);
 
-//     let column4 = document.createElement("td");
-//     column4.innerText = team.division;
-//     row.appendChild(column4);
+    let column6 = document.createElement("td");
+    column6.innerText = team.full_name;
+    row.appendChild(column6);
+  });
+};
 
-//     let column5 = document.createElement("td");
-//     column5.innerText = team.abbreviation;
-//     row.appendChild(column5);
+// *CONTROLLER HERE
+function controller(teamData) {
+  console.log("controllers", teamData);
+  //get the data
+  //we call fetchData outside of this function
+  // build table with all data
+  createTeamTable(teamData);
+}
 
-//     let column6 = document.createElement("td");
-//     column6.innerText = team.full_name;
-//     row.appendChild(column6);
-//   });
-// };
-// function controller(teamData) {
-//   console.log("controllers", teamData);
-//   //get the data
-//   //we call fetchData outside of this function
-//   // build table with all data
-//   createTeamTable(teamData);
-// }
+const filterButtons = document.querySelectorAll(".filter-nav a");
+filterButtons.forEach((ele) => {
+  ele.addEventListener("click", (e) => handleFilterClick(e));
+});
 
-// const filterButtons = document.querySelectorAll(".filter-nav a");
-// filterButtons.forEach((ele) => {
-//   ele.addEventListener("click", (e) => handleFilterClick(e));
-// });
+function handleFilterClick(e) {
+  let target = e.target;
 
-// function handleFilterClick(e) {
-//   let target = e.target;
+  e.preventDefault(); //* THIS SECTION IS ONLY FOR CSS - REFRER TO 53MIN IN VID
+  filterButtons.forEach((ele) => {
+    ele.classList.remove("active");
+  });
+  target.classList.add("active");
 
-//   e.preventDefault(); //* THIS SECTION IS ONLY FOR CSS - REFRER TO 53MIN IN VID
-//   filterButtons.forEach((ele) => {
-//     ele.classList.remove("active");
-//   });
-//   target.classList.add("active");
-
-//   filterConf(target.dataset.filter);
-// }
-
-// const template = document.querySelector("#animal-card");
-
-// const wrapper = document.createElement("div");
-
-// teamData.forEach((teamData) => {
-//   const clone = template.content.cloneNode(true);
-
-//   wrapper.appendChild(clone);
-// });
-
-// document.querySelector(".teams").appendChild(wrapper);
+  filterConf(target.dataset.filter);
+}
 
 getAllTeams();
 
