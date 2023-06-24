@@ -1,24 +1,3 @@
-// Fetch the API data
-fetch("https://www.balldontlie.io/api/v1/teams")
-  .then((response) => response.json())
-  .then((data) => {
-    // Process the API response
-    const fetchedObjects = data.objects;
-
-    // Add the images to the objects
-    fetchedObjects.forEach((obj, index) => {
-      const imageUrl = `https://loodibee.com/wp-content/uploads/nba-${index}480x480.png`; // Replace with the actual image URL or logic to determine the URL
-
-      obj.imageURL = imageUrl;
-    });
-
-    // Use the modified objects
-    console.log(fetchedObjects); // You can now access the fetchedObjects with the added imageURL property
-  })
-  .catch((error) => {
-    console.log("Error fetching API data:", error);
-  });
-
 // const getAllTeams = () => {
 //   const url = "https://www.balldontlie.io/api/v1/teams";
 //   fetch(url)
@@ -27,7 +6,7 @@ fetch("https://www.balldontlie.io/api/v1/teams")
 //     })
 //     .then((result) => {
 //       const teamData = result.data;
-//       console.log("", teamData);
+//       console.log("team data", teamData);
 //       controller(teamData);
 //     })
 //     .catch((error) => {
@@ -40,13 +19,14 @@ fetch("https://www.balldontlie.io/api/v1/teams")
 
 //   createTeamTable(teamData);
 // }
+// !break here
 // const teamPromise = await fetch("https://www.balldontlie.io/api/v1/teams");
-// const teams = await teamPromise.json();
+// const teamData = await teamPromise.json();
 
 // const template = document.querySelector("#team-cards");
 // const wrapper = document.createElement("div");
 
-// teamsData.forEach(() => {
+// teamData.forEach(() => {
 //   const clone = template.content.cloneNode(true);
 
 //   wrapper.appendChild(result);
@@ -54,4 +34,30 @@ fetch("https://www.balldontlie.io/api/v1/teams")
 
 // document.querySelector(".teamData").appendChild(wrapper);
 
-// getAllTeams()
+const fetchTeams = async () => {
+  try {
+    const teamPromise = await fetch("https://www.balldontlie.io/api/v1/teams");
+    const response = await teamPromise.json();
+
+    const teamData = response.data;
+
+    const template = document.querySelector("#team-cards");
+    const wrapper = document.createElement("div");
+
+    teamData.forEach((team) => {
+      const clone = template.content.cloneNode(true);
+      clone.querySelector(".team-name").textContent = team.full_name;
+      clone.querySelector(".team-city").textContent = team.city;
+      clone.querySelector(".team-conference").textContent = team.conference;
+      clone.querySelector(".team-abbreviation").textContent = team.abbreviation;
+      clone.querySelector(".team-division").textContent = team.division;
+      wrapper.appendChild(clone);
+    });
+
+    document.querySelector(".teamData").appendChild(wrapper);
+  } catch (error) {
+    console.log("Error fetching team data:", error);
+  }
+};
+
+fetchTeams();
