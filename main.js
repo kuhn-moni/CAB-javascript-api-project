@@ -46,6 +46,9 @@ const createTeamTable = (teamData) => {
     let column6 = document.createElement("td");
     column6.innerText = team.full_name;
     row.appendChild(column6);
+
+    const template = document.querySelector("#team-cards");
+    const wrapper = document.createElement("div");
   });
 };
 
