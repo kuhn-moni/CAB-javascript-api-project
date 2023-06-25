@@ -60,7 +60,7 @@ body {
 
 .team-cards {
   display: grid;
-  grid-template-columns: 200px 1fr 1fr;
+  grid-template-columns: 200px 1fr;
   background-color: white;
   border-radius: 60px;
 }

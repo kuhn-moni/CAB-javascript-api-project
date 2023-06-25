@@ -1,39 +1,3 @@
-// const getAllTeams = () => {
-//   const url = "https://www.balldontlie.io/api/v1/teams";
-//   fetch(url)
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((result) => {
-//       const teamData = result.data;
-//       console.log("team data", teamData);
-//       controller(teamData);
-//     })
-//     .catch((error) => {
-//       console.log("error :>> ", error);
-//     });
-// };
-
-// function controller(teamData) {
-//   console.log("controllers", teamData);
-
-//   createTeamTable(teamData);
-// }
-// !break here
-// const teamPromise = await fetch("https://www.balldontlie.io/api/v1/teams");
-// const teamData = await teamPromise.json();
-
-// const template = document.querySelector("#team-cards");
-// const wrapper = document.createElement("div");
-
-// teamData.forEach(() => {
-//   const clone = template.content.cloneNode(true);
-
-//   wrapper.appendChild(result);
-// });
-
-// document.querySelector(".teamData").appendChild(wrapper);
-
 const fetchTeams = async () => {
   try {
     const teamPromise = await fetch("https://www.balldontlie.io/api/v1/teams");
@@ -51,6 +15,12 @@ const fetchTeams = async () => {
       clone.querySelector(".team-conference").textContent = team.conference;
       clone.querySelector(".team-abbreviation").textContent = team.abbreviation;
       clone.querySelector(".team-division").textContent = team.division;
+
+      // Dynamically set the SVG image source
+      const logoImg = clone.querySelector(".team-logo");
+      logoImg.src = `/Assets/team logos/${team.abbreviation}.svg`;
+      logoImg.alt = team.abbreviation;
+
       wrapper.appendChild(clone);
     });
 
