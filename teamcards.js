@@ -4,7 +4,7 @@ const fetchTeams = async () => {
     const response = await teamPromise.json();
 
     const teamData = response.data;
-
+    console.log(teamData);
     const template = document.querySelector("#team-cards");
     const wrapper = document.createElement("div");
 
@@ -15,7 +15,7 @@ const fetchTeams = async () => {
       clone.querySelector(".team-conference").textContent = team.conference;
       clone.querySelector(".team-abbreviation").textContent = team.abbreviation;
       clone.querySelector(".team-division").textContent = team.division;
-
+      clone.querySelector(".primary-btn").textContent = `current team`;
       // Dynamically set the SVG image source
       const logoImg = clone.querySelector(".team-logo");
       logoImg.src = `/Assets/team logos/${team.abbreviation}.svg`;

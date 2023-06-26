@@ -1,14 +1,15 @@
 // * 1 FETCHING THE DATA
 
 const getAllPlayers = () => {
-  const url = "https://www.balldontlie.io/api/v1/stats?seasons[]=2022";
+  const url =
+    "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2";
   fetch(url)
     .then((response) => {
       return response.json();
     })
     .then((result) => {
       const playersData = result.data;
-      // console.log("games :>> ", playersData);
+      console.log("games :>> ", result);
       controller(playersData);
     })
     .catch((error) => {
@@ -63,14 +64,10 @@ const btn = document.getElementsByClassName("showMoreBtn");
 // console.log("Player ID :>> ", btn);
 
 //* 3 MAKE CONTROLLER FUNCTION
-
 function controller(playersData) {
   console.log("controllers", playersData);
-  //get the data
-  //we call fetchData outside of this function
-  // build table with all data
   createPlayerTable(playersData);
-  addEventListeners(playersData);
+  // addEventListener(playersData);
   console.count;
 }
 
@@ -92,7 +89,7 @@ const getPlayersAvg = (playerIdValue) => {
     });
 };
 
-// *handleClickEvent - takes the click and process it to an action
+// *PLAYER ID - handleClickEvent -
 const handClick = (event) => {
   const playerIdValue = event.target.value;
   console.log("ID", playerIdValue);
@@ -101,6 +98,9 @@ const handClick = (event) => {
 
 getAllPlayers();
 
+let params = new URL(document.location).searchParams;
+let team = params.get("team"); // is the string "Jonathan Smith".
+console.log(team);
 // !getting season average with event
 // *Adding player id into quea
 // create button in ID column - DOM manipulation
