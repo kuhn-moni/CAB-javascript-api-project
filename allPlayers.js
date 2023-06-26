@@ -98,9 +98,6 @@ const handClick = (event) => {
 
 getAllPlayers();
 
-let params = new URL(document.location).searchParams;
-let team = params.get("team"); // is the string "Jonathan Smith".
-console.log(team);
 // !getting season average with event
 // *Adding player id into quea
 // create button in ID column - DOM manipulation
