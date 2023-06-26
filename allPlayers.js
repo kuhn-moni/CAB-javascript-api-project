@@ -8,7 +8,7 @@ const getAllPlayers = () => {
     })
     .then((result) => {
       const playersData = result.data;
-      console.log("games :>> ", playersData);
+      // console.log("games :>> ", playersData);
       controller(playersData);
     })
     .catch((error) => {
@@ -20,7 +20,7 @@ const getAllPlayers = () => {
 const createPlayerTable = (playersData) => {
   let table = document.getElementById("playerTable");
 
-  console.log("players data table", playersData);
+  // console.log("players data table", playersData);
 
   playersData.forEach((player) => {
     let row = document.createElement("tr");
