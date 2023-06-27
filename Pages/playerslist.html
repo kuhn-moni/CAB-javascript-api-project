@@ -25,13 +25,23 @@
       </nav>
     </nav>
 
-    <select id="teamSelect">
-      <option value="">Select a team</option>
-      <option value="Indiana Pacers">pacers</option>
-      <option value="team2">Team 2</option>
-      <!-- Add more options for each team -->
-    </select>
-    <button id="filterButton">Filter</button>
+    <template id="player-cards">
+      <div class="player-cards">
+        <div class="player-card-text">
+          <h3 class="player-name"></h3>
+          <small>
+            <span class="player-city"></span>
+            <span class="player-conference"></span>
+            <span class="player-abbreviation"></span>
+            <span class="player-division"></span>
+            <a href="#" class="seasonAvg-btn">Current Players</a>
+          </small>
+        </div>
+        <div class="player-card-logo">
+          <img class="player-logo" />
+        </div>
+      </div>
+    </template>
 
     <!-- *TABLE FOR PLAYER DATA -->
     <section id="player-container">

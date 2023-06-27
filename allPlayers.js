@@ -1,4 +1,5 @@
-// 1. FETCHING THE DATA
+// * 1 FETCHING THE DATA
+
 const getAllPlayers = () => {
   const url =
     "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2";
@@ -9,17 +10,18 @@ const getAllPlayers = () => {
     .then((result) => {
       const playersData = result.data;
       console.log("games :>> ", result);
-      createPlayerTable(playersData); // Call the createPlayerTable function with the initial data
+      controller(playersData);
     })
     .catch((error) => {
       console.log("error :>> ", error);
     });
 };
 
-// 2. PLAYER TABLE DATA
+// * 2 PLAYER TABLE DATA
 const createPlayerTable = (playersData) => {
   let table = document.getElementById("playerTable");
-  table.innerHTML = ""; // Clear the table before populating it with filtered data
+
+  // console.log("players data table", playersData);
 
   playersData.forEach((player) => {
     let row = document.createElement("tr");
@@ -42,44 +44,35 @@ const createPlayerTable = (playersData) => {
     row.appendChild(column4);
 
     let column5 = document.createElement("td");
-    const showMoreBtn = document.createElement("button");
+    const showMoreBtn = document.createElement("Button");
     showMoreBtn.classList.add("showMoreBtn");
+    // console.log(showMoreBtn);
+    // console.log(
+    //   "here is the value of the player.player.id nested property which varies for each iteration of our loop",
+    //   player.player.id
+    // );
     showMoreBtn.value = player.player.id;
+    // console.log("showMoreBtn.value =", showMoreBtn.value); //!HERE IS ALL PLAYER ID TO BE SHOWN ON CLG
     showMoreBtn.innerText = "Show More";
-    showMoreBtn.addEventListener("click", handleClick);
+    showMoreBtn.addEventListener("click", handClick);
+
     column5.appendChild(showMoreBtn);
     row.appendChild(column5);
   });
 };
+const btn = document.getElementsByClassName("showMoreBtn");
+// console.log("Player ID :>> ", btn);
 
-// 3. FILTER BY TEAM
-const filterByTeam = () => {
-  const teamSelect = document.getElementById("teamSelect");
-  const selectedTeam = teamSelect.value;
+//* 3 MAKE CONTROLLER FUNCTION
+function controller(playersData) {
+  console.log("controllers", playersData);
+  createPlayerTable(playersData);
+  // addEventListener(playersData);
+  console.count;
+}
 
-  const url = `https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2&team=${selectedTeam}`;
-  fetch(url)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      const playersData = result.data;
-      console.log("filtered players :>> ", playersData);
-      createPlayerTable(playersData); // Call the createPlayerTable function with the filtered data
-    })
-    .catch((error) => {
-      console.log("error :>> ", error);
-    });
-};
+// * 4 URL FOR PLAYERS SEASON AVERAGE
 
-// 4. EVENT HANDLER FOR SHOW MORE BUTTON
-const handleClick = (event) => {
-  const playerIdValue = event.target.value;
-  console.log("ID", playerIdValue);
-  getPlayersAvg(playerIdValue);
-};
-
-// 5. GET PLAYER'S SEASON AVERAGE
 const getPlayersAvg = (playerIdValue) => {
   const averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerIdValue}`;
   fetch(averagesUrl)
@@ -89,16 +82,29 @@ const getPlayersAvg = (playerIdValue) => {
     .then((result) => {
       const playersAvg = result.data;
       console.log("AVERAGES :>> ", playersAvg);
-      // Update UI or do something with player's season average data
+      controller(playersAvg);
     })
     .catch((error) => {
       console.log("error :>> ", error);
     });
 };
 
-// 6. ADD EVENT LISTENERS
-const filterButton = document.getElementById("filterButton");
-filterButton.addEventListener("click", filterByTeam);
+// *PLAYER ID - handleClickEvent -
+const handClick = (event) => {
+  const playerIdValue = event.target.value;
+  console.log("ID", playerIdValue);
+  getPlayersAvg(playerIdValue);
+};
 
-// 7. CALL THE INITIAL FUNCTION
 getAllPlayers();
+
+// !getting season average with event
+// *Adding player id into quea
+// create button in ID column - DOM manipulation
+// ID of the button is ID of Player (player.player.id)
+// create handleButtonClick(event) function (what we want to happen when click happens) - have console log (event) to see if it recognized
+// add eventlisteners to each button - onlcick event.pass hanlde function as callback
+// this is what i will pass as a callback
+// from here, event.target.value must be made into variable which is then placed at the end of the season average URL
+
+//proimseALL to fetch top 5 players from each teama
