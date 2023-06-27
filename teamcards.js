@@ -41,6 +41,7 @@ const renderTeams = (teams) => {
   teamDataDiv.appendChild(wrapper);
 };
 
+//filter function EAST WEST CONF
 const filterTeams = (filter) => {
   if (filter === "all") {
     renderTeams(teamData);
@@ -50,9 +51,10 @@ const filterTeams = (filter) => {
   }
 };
 
+//event listner to recognise clicks on button
 document.querySelectorAll(".filter-nav a").forEach((link) => {
   link.addEventListener("click", (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const filter = event.target.getAttribute("data-filter");
     filterTeams(filter);
   });
