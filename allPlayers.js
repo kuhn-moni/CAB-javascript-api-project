@@ -52,40 +52,20 @@ const createPlayerTable = (playersData) => {
   });
 };
 
-// // 3. FILTER BY TEAM
-// const filterByTeam = () => {
-//   const teamSelect = document.getElementById("teamSelect");
-//   const selectedTeam = teamSelect.value;
-
-//   const url = `https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2&team=${selectedTeam}`;
-//   fetch(url)
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((result) => {
-//       const playersData = result.data;
-//       console.log("filtered players :>> ", playersData);
-//       createPlayerTable(playersData); // Call the createPlayerTable function with the filtered data
-//     })
-//     .catch((error) => {
-//       console.log("error :>> ", error);
-//     });
-// };
 // 3. FILTER BY TEAM
-const filterByTeam = (teamName) => {
-  const url =
-    "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2";
+const filterByTeam = () => {
+  const teamSelect = document.getElementById("teamSelect");
+  const selectedTeam = teamSelect.value;
+
+  const url = `https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2&team=${selectedTeam}`;
   fetch(url)
     .then((response) => {
       return response.json();
     })
     .then((result) => {
       const playersData = result.data;
-      const filteredPlayers = playersData.filter(
-        (player) => player.team.full_name === teamName
-      );
-      console.log("filtered players :>> ", filteredPlayers);
-      createPlayerTable(filteredPlayers); // Call the createPlayerTable function with the filtered data
+      console.log("filtered players :>> ", playersData);
+      createPlayerTable(playersData); // Call the createPlayerTable function with the filtered data
     })
     .catch((error) => {
       console.log("error :>> ", error);
