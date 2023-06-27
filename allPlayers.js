@@ -1,4 +1,4 @@
-// * 1 FETCHING THE DATA
+// 1. FETCHING THE DATA
 const getAllPlayers = () => {
   const url =
     "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2";
@@ -9,17 +9,17 @@ const getAllPlayers = () => {
     .then((result) => {
       const playersData = result.data;
       console.log("games :>> ", result);
-      controller(playersData);
+      createPlayerTable(playersData); // Call the createPlayerTable function with the initial data
     })
     .catch((error) => {
       console.log("error :>> ", error);
     });
 };
 
-// * 2 PLAYER TABLE DATA
+// 2. PLAYER TABLE DATA
 const createPlayerTable = (playersData) => {
   let table = document.getElementById("playerTable");
-  table.innerHTML = ""; // Clear the table before adding filtered rows
+  table.innerHTML = ""; // Clear the table before populating it with filtered data
 
   playersData.forEach((player) => {
     let row = document.createElement("tr");
@@ -46,42 +46,79 @@ const createPlayerTable = (playersData) => {
     showMoreBtn.classList.add("showMoreBtn");
     showMoreBtn.value = player.player.id;
     showMoreBtn.innerText = "Show More";
-    showMoreBtn.addEventListener("click", handClick);
-
+    showMoreBtn.addEventListener("click", handleClick);
     column5.appendChild(showMoreBtn);
     row.appendChild(column5);
   });
 };
 
-// * 3 MAKE CONTROLLER FUNCTION
-function controller(playersData) {
-  console.log("controllers", playersData);
-  createPlayerTable(playersData);
-  console.count;
-}
+// // 3. FILTER BY TEAM
+// const filterByTeam = () => {
+//   const teamSelect = document.getElementById("teamSelect");
+//   const selectedTeam = teamSelect.value;
 
-// *PLAYER ID - handleClickEvent -
-const handClick = (event) => {
-  const playerIdValue = event.target.value;
-  const teamName =
-    event.target.parentElement.parentElement.querySelector(
-      "td:nth-child(4)"
-    ).innerText;
-  console.log("ID", playerIdValue);
-  console.log("Team", teamName);
-
-  fetch("https://www.balldontlie.io/api/v1/teams")
-    .then((response) => response.json())
+//   const url = `https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2&team=${selectedTeam}`;
+//   fetch(url)
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((result) => {
+//       const playersData = result.data;
+//       console.log("filtered players :>> ", playersData);
+//       createPlayerTable(playersData); // Call the createPlayerTable function with the filtered data
+//     })
+//     .catch((error) => {
+//       console.log("error :>> ", error);
+//     });
+// };
+// 3. FILTER BY TEAM
+const filterByTeam = (teamName) => {
+  const url =
+    "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2";
+  fetch(url)
+    .then((response) => {
+      return response.json();
+    })
     .then((result) => {
-      const teams = result.data;
-      const filteredPlayersData = playersData.filter(
+      const playersData = result.data;
+      const filteredPlayers = playersData.filter(
         (player) => player.team.full_name === teamName
       );
-      controller(filteredPlayersData);
+      console.log("filtered players :>> ", filteredPlayers);
+      createPlayerTable(filteredPlayers); // Call the createPlayerTable function with the filtered data
     })
     .catch((error) => {
-      console.log("Error fetching team data:", error);
+      console.log("error :>> ", error);
     });
 };
 
+// 4. EVENT HANDLER FOR SHOW MORE BUTTON
+const handleClick = (event) => {
+  const playerIdValue = event.target.value;
+  console.log("ID", playerIdValue);
+  getPlayersAvg(playerIdValue);
+};
+
+// 5. GET PLAYER'S SEASON AVERAGE
+const getPlayersAvg = (playerIdValue) => {
+  const averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerIdValue}`;
+  fetch(averagesUrl)
+    .then((response) => {
+      return response.json();
+    })
+    .then((result) => {
+      const playersAvg = result.data;
+      console.log("AVERAGES :>> ", playersAvg);
+      // Update UI or do something with player's season average data
+    })
+    .catch((error) => {
+      console.log("error :>> ", error);
+    });
+};
+
+// 6. ADD EVENT LISTENERS
+const filterButton = document.getElementById("filterButton");
+filterButton.addEventListener("click", filterByTeam);
+
+// 7. CALL THE INITIAL FUNCTION
 getAllPlayers();
