@@ -28,6 +28,7 @@ const renderTeams = (teams) => {
       .querySelector(".primary-btn")
       .setAttribute("href", `/Pages/playerslist.html?team=${team.full_name}`);
     clone.querySelector(".primary-btn").textContent = "Current Players";
+
     // Dynamically set the SVG image source
     const logoImg = clone.querySelector(".team-logo");
     logoImg.src = `/Assets/team logos/${team.abbreviation}.svg`;
@@ -59,5 +60,7 @@ document.querySelectorAll(".filter-nav a").forEach((link) => {
     filterTeams(filter);
   });
 });
+
+function getPlayers() {}
 
 fetchTeams();

@@ -58,7 +58,8 @@ body {
   margin: 0 auto;
 }
 
-.team-cards {
+.team-cards,
+.player-cards {
   display: grid;
   grid-template-columns: 200px 1fr;
   background-color: white;
@@ -74,7 +75,8 @@ body {
   width: 100%;
 }
 
-.team-card-text {
+.team-card-text,
+.player-card-text {
   padding: 20px 25px;
 }
 
