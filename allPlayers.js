@@ -1,21 +1,39 @@
 // * 1 FETCHING THE DATA
+const totalPages = 437;
+let allData = {};
+const getAllPlayers = async () => {
+  let existingData = localStorage.getItem("seasonData");
+  console.log(existingData);
+  for (let i = 1; i < totalPages; i++) {
+    if (i % 55 === 0) {
+      await new Promise((resolve) => {
+        setTimeout(resolve, 60000);
+      });
+    }
 
-const getAllPlayers = () => {
-  const url =
-    "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2";
-  fetch(url)
-    .then((response) => {
-      return response.json();
-    })
-    .then((result) => {
-      const playersData = result.data;
-      console.log("games :>> ", result);
-      controller(playersData);
-    })
-    .catch((error) => {
-      console.log("error :>> ", error);
-    });
+    const response = await fetch(
+      `https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=${i}`
+    );
+    const data = await response.json();
+    allData = { ...allData, ...data };
+
+    // existingData = existingData ? JSON.parse(existingData) : {};
+    // existingData = data;
+    localStorage.setItem("season", JSON.stringify(data));
+
+    console.log(allData);
+    // Assuming the API returns a 'data' array in the response
+    if (totalPages === 437) {
+      console.log("donezel washington!");
+      // If the API returns data, continue fetching the next page
+      // if (data.length > 0) {
+      //   getAllPlayers();
+      // }
+    }
+  }
 };
+
+console.log(allData, localStorage.getItem("seasonDataData"));
 
 // * 2 PLAYER TABLE DATA
 const createPlayerTable = (playersData) => {
@@ -99,7 +117,7 @@ const handClick = (event) => {
 getAllPlayers();
 
 // !getting season average with event
-// *Adding player id into quea
+// *Adding player id into query
 // create button in ID column - DOM manipulation
 // ID of the button is ID of Player (player.player.id)
 // create handleButtonClick(event) function (what we want to happen when click happens) - have console log (event) to see if it recognized
@@ -108,3 +126,6 @@ getAllPlayers();
 // from here, event.target.value must be made into variable which is then placed at the end of the season average URL
 
 //proimseALL to fetch top 5 players from each teama
+
+//dynamically input players based on the team they are from.
+//function to match team primary btn to to
