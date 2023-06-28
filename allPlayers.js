@@ -2,12 +2,11 @@
 const totalPages = 437;
 let allData = {};
 const getAllPlayers = async () => {
-  let existingData = localStorage.getItem("seasonData");
-  console.log(existingData);
+  // let existingData = localStorage.getItem("seasonData");
   for (let i = 1; i < totalPages; i++) {
-    if (i % 55 === 0) {
+    if (i % 40 === 0) {
       await new Promise((resolve) => {
-        setTimeout(resolve, 60000);
+        setTimeout(resolve, 120000);
       });
     }
 
@@ -15,20 +14,24 @@ const getAllPlayers = async () => {
       `https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=${i}`
     );
     const data = await response.json();
+    //TODO: Solve a way of making sure allData doesn't update with an empty array each time it saves the object data to itself.
+    //TODO - if statement / conditional operator ?
     allData = { ...allData, ...data };
 
     // existingData = existingData ? JSON.parse(existingData) : {};
     // existingData = data;
-    localStorage.setItem("season", JSON.stringify(data));
+    localStorage.setItem("seasonData", JSON.stringify(data));
 
     console.log(allData);
     // Assuming the API returns a 'data' array in the response
-    if (totalPages === 437) {
+    if (i === 437) {
       console.log("donezel washington!");
       // If the API returns data, continue fetching the next page
       // if (data.length > 0) {
       //   getAllPlayers();
       // }
+    } else {
+      console.log("page:", i);
     }
   }
 };
