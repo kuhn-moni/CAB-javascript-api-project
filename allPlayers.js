@@ -2,7 +2,7 @@
 
 const getAllPlayers = () => {
   const url =
-    "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=2";
+    "https://www.balldontlie.io/api/v1/stats?seasons[]=2022&per_page=100&page=4";
   fetch(url)
     .then((response) => {
       return response.json();
