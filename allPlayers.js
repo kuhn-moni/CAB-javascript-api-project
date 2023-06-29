@@ -75,87 +75,91 @@ function controller(playersData) {
 // *ForEach loop to populate the table with seasonAvg data when clicked
 
 const getPlayersAvg = (playerIdValue) => {
+  console.log("in get avgs");
   const averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerIdValue}`;
+  console.log(averagesUrl);
   fetch(averagesUrl)
     .then((response) => {
       return response.json();
     })
     .then((result) => {
-      const playersAvg = result.data;
-      console.log("AVERAGES :>> ", playersAvg);
-      controller(playersAvg);
+      const avg = result.data[0];
+      console.log("AVERAGES :>> ", avg);
+      // controller(playersAvg);
+
+      // *targeting the modal div/table
+      console.log("test");
+      const modal = document.getElementById("myModal");
+      const tableBody = document
+        .getElementById("averageTable")
+        .querySelector("tbody");
+      // *making sure the tabledata is cleared
+      tableBody.innerHTML = "";
+      //*looping with forEach
+      console.log("in foreach avg", avg);
+      let row = document.createElement("tr");
+
+      let minPlayedCell = document.createElement("td");
+      minPlayedCell.innerText = avg.min;
+      row.appendChild(minPlayedCell);
+
+      let pointsCell = document.createElement("td");
+      pointsCell.innerText = avg.pts;
+      row.appendChild(pointsCell);
+
+      let assistsCell = document.createElement("td");
+      assistsCell.innerText = avg.ast;
+      row.appendChild(assistsCell);
+
+      let reboundsCell = document.createElement("td");
+      reboundsCell.innerText = avg.reb;
+      row.appendChild(reboundsCell);
+
+      let stealsCell = document.createElement("td");
+      stealsCell.innerText = avg.stl;
+      row.appendChild(stealsCell);
+
+      let fgPctCell = document.createElement("td");
+      fgPctCell.innerText = avg.fg_pct;
+      row.appendChild(fgPctCell);
+
+      let fgaCell = document.createElement("td");
+      fgaCell.innerText = avg.fga;
+      row.appendChild(fgaCell);
+
+      let fg3PctCell = document.createElement("td");
+      fg3PctCell.innerText = avg.fg3_pct;
+      row.appendChild(fg3PctCell);
+
+      let turnoversCell = document.createElement("td");
+      turnoversCell.innerText = avg.turnover;
+      row.appendChild(turnoversCell);
+      console.log("row", row);
+
+      tableBody.appendChild(row);
+      // }
+      modal.style.display = "block";
     })
     .catch((error) => {
-      console.log("error :>> ", error);
+      // console.log("error :>> ", error);
     });
-  // *targeting the modal div/table
-  const modal = document.getElementById("myModal");
-  const tableBody = document
-    .getElementById("averageTable")
-    .querySelector("tbody");
-  // *making sure the tabledata is cleared
-  tableBody.innerHTML = "";
-  //*looping with forEach
-  playersAvg.forEach((avg) => {
-    let row = document.createElement("tr");
-
-    let minPlayedCell = document.createElement("td");
-    minPlayedCell.innerText = avg.min;
-    row.appendChild(column);
-
-    let pointsCell = document.createElement("td");
-    pointsCell.innerText = avg.pts;
-    row.appendChild(column2);
-
-    let assistsCell = document.createElement("td");
-    assistsCell.innerText = avg.ast;
-    row.appendChild(column3);
-
-    let reboundsCell = document.createElement("td");
-    reboundsCell.innerText = avg.reb;
-    row.appendChild(column4);
-    // !
-    let stealsCell = document.createElement("td");
-    stealsCell.innerText = avg.stl;
-    row.appendChild(column4);
-
-    let fgPctCell = document.createElement("td");
-    fgPctCell.innerText = avg.fg_pct;
-    row.appendChild(column5);
-
-    let fgaCell = document.createElement("td");
-    fgaCell.innerText = avg.fga;
-    row.appendChild(column6);
-
-    let fg3PctCell = document.createElement("td");
-    fg3PctCell.innerText = avg.fg3_pct;
-    row.appendChild(column7);
-
-    let turnoversCell = document.createElement("td");
-    turnoversCell.innerText = avg.turnover;
-    row.appendChild(column8);
-  });
 };
 
-// const getPlayersAvg = (playerIdValue) => {
-//   const averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerIdValue}`;
-//   fetch(averagesUrl)
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((results) => {
-//       const playersAvg = result.data;
+const modal = document.getElementById("myModal");
+const closeButton = document.querySelector(".close");
 
-//       })
-// }
+closeButton.onclick = function () {
+  modal.style.display = "none";
+};
 
 // *PLAYER ID - handleClickEvent -
 const handClick = (event) => {
   const playerIdValue = event.target.value;
-  console.log("ID", playerIdValue);
+  console.log("button clicked - player ID", playerIdValue);
   getPlayersAvg(playerIdValue);
 };
 
+// getPlayersAvg();
 getAllPlayers();
 
 // !getting season average with event
