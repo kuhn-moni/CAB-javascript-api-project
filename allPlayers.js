@@ -72,6 +72,7 @@ function controller(playersData) {
 }
 
 // * 4 URL FOR PLAYERS SEASON AVERAGE
+// *ForEach loop to populate the table with seasonAvg data when clicked
 
 const getPlayersAvg = (playerIdValue) => {
   const averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerIdValue}`;
@@ -92,7 +93,61 @@ const getPlayersAvg = (playerIdValue) => {
   const tableBody = document
     .getElementById("averageTable")
     .querySelector("tbody");
+  // *making sure the tabledata is cleared
+  tableBody.innerHTML = "";
+  //*looping with forEach
+  playersAvg.forEach((avg) => {
+    let row = document.createElement("tr");
+
+    let minPlayedCell = document.createElement("td");
+    minPlayedCell.innerText = avg.min;
+    row.appendChild(column);
+
+    let pointsCell = document.createElement("td");
+    pointsCell.innerText = avg.pts;
+    row.appendChild(column2);
+
+    let assistsCell = document.createElement("td");
+    assistsCell.innerText = avg.ast;
+    row.appendChild(column3);
+
+    let reboundsCell = document.createElement("td");
+    reboundsCell.innerText = avg.reb;
+    row.appendChild(column4);
+    // !
+    let stealsCell = document.createElement("td");
+    stealsCell.innerText = avg.stl;
+    row.appendChild(column4);
+
+    let fgPctCell = document.createElement("td");
+    fgPctCell.innerText = avg.fg_pct;
+    row.appendChild(column5);
+
+    let fgaCell = document.createElement("td");
+    fgaCell.innerText = avg.fga;
+    row.appendChild(column6);
+
+    let fg3PctCell = document.createElement("td");
+    fg3PctCell.innerText = avg.fg3_pct;
+    row.appendChild(column7);
+
+    let turnoversCell = document.createElement("td");
+    turnoversCell.innerText = avg.turnover;
+    row.appendChild(column8);
+  });
 };
+
+// const getPlayersAvg = (playerIdValue) => {
+//   const averagesUrl = `https://www.balldontlie.io/api/v1/season_averages?player_ids[]=${playerIdValue}`;
+//   fetch(averagesUrl)
+//     .then((response) => {
+//       return response.json();
+//     })
+//     .then((results) => {
+//       const playersAvg = result.data;
+
+//       })
+// }
 
 // *PLAYER ID - handleClickEvent -
 const handClick = (event) => {
