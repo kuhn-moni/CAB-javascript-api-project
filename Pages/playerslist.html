@@ -25,7 +25,7 @@
       </nav>
     </nav>
     <!-- *SAMPLE CARD TO USE FOR TEMPLATE -->
-    <div class="player-cards">
+    <!-- <div class="player-cards">
       <div class="player-card-text">
         <h3 class="player-name">Kawhi Leonard</h3>
         <small>
@@ -39,7 +39,7 @@
       <div class="player-card-logo">
         <img class="player-logo" />
       </div>
-    </div>
+    </div> -->
 
     <!-- *TEMPLATE TO LOOP - MIGHT NOT USE -->
     <template id="player-cards">
@@ -74,6 +74,32 @@
         </thead>
       </table>
     </section>
+
+    <!-- !MODAL /POP UP  -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <table id="averageTable">
+          <thead>
+            <tr>
+              <th>Minutes Played</th>
+              <th>Points</th>
+              <th>Assists</th>
+              <th>Rebounds</th>
+              <th>Steals</th>
+              <th>FG %</th>
+              <th>FGA</th>
+              <th>FGM %</th>
+              <th>Turnovers</th>
+              <!-- Add more columns as needed -->
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will go here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"

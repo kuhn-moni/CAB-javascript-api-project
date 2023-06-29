@@ -87,6 +87,11 @@ const getPlayersAvg = (playerIdValue) => {
     .catch((error) => {
       console.log("error :>> ", error);
     });
+  // *targeting the modal div/table
+  const modal = document.getElementById("myModal");
+  const tableBody = document
+    .getElementById("averageTable")
+    .querySelector("tbody");
 };
 
 // *PLAYER ID - handleClickEvent -
