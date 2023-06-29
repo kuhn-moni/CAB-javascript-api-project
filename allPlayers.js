@@ -99,7 +99,7 @@ const handClick = (event) => {
 getAllPlayers();
 
 // !getting season average with event
-// *Adding player id into quea
+// *Adding player id into query
 // create button in ID column - DOM manipulation
 // ID of the button is ID of Player (player.player.id)
 // create handleButtonClick(event) function (what we want to happen when click happens) - have console log (event) to see if it recognized
@@ -108,3 +108,4 @@ getAllPlayers();
 // from here, event.target.value must be made into variable which is then placed at the end of the season average URL
 
 //proimseALL to fetch top 5 players from each teama
+//TODO explain the limitation of the api (60 fetches per min) which prevents me from accessing the whole data set of
