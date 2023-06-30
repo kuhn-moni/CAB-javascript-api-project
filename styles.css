@@ -82,7 +82,7 @@ body {
 
 .primary-btn,
 .showMoreBtn {
-  background: linear-gradient(orange, red);
+  background: linear-gradient(rgba(255, 166, 0, 0.621), rgba(255, 0, 0, 0.642));
   padding: 8px;
   color: white;
   border-radius: 10px;
