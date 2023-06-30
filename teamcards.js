@@ -14,7 +14,6 @@ const fetchTeams = async () => {
   }
 };
 //*FILTER FUNCTION TO RENDER/HIDE TEAMS
-// !NEEDS TO BE UNDERSTOOD BETTER
 const renderTeams = (teams) => {
   const template = document.querySelector("#team-cards");
   const wrapper = document.createElement("div");
