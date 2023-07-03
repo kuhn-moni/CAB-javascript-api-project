@@ -155,7 +155,6 @@ const handClick = (event) => {
   getPlayersAvg(playerIdValue);
 };
 
-// getPlayersAvg();
 getAllPlayers();
 
 //TODO explain the limitation of the api (60 fetches per min) which prevents me from accessing the whole data set of
