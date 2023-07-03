@@ -46,11 +46,7 @@ const createPlayerTable = (playersData) => {
     let column5 = document.createElement("td");
     const showMoreBtn = document.createElement("Button");
     showMoreBtn.classList.add("showMoreBtn");
-    // console.log(showMoreBtn);
-    // console.log(
-    //   "here is the value of the player.player.id nested property which varies for each iteration of our loop",
-    //   player.player.id
-    // );
+
     showMoreBtn.value = player.player.id;
     // console.log("showMoreBtn.value =", showMoreBtn.value); //!HERE IS ALL PLAYER ID TO BE SHOWN ON CLG
     showMoreBtn.innerText = "Show More";
@@ -162,14 +158,4 @@ const handClick = (event) => {
 // getPlayersAvg();
 getAllPlayers();
 
-// !getting season average with event
-// *Adding player id into query
-// create button in ID column - DOM manipulation
-// ID of the button is ID of Player (player.player.id)
-// create handleButtonClick(event) function (what we want to happen when click happens) - have console log (event) to see if it recognized
-// add eventlisteners to each button - onlcick event.pass hanlde function as callback
-// this is what i will pass as a callback
-// from here, event.target.value must be made into variable which is then placed at the end of the season average URL
-
-//proimseALL to fetch top 5 players from each teama
 //TODO explain the limitation of the api (60 fetches per min) which prevents me from accessing the whole data set of
