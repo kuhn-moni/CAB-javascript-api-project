@@ -91,8 +91,7 @@ const getPlayersAvg = (playerIdValue) => {
         .querySelector("tbody");
       // *making sure the tabledata is cleared
       tableBody.innerHTML = "";
-      //*looping with forEach
-      console.log("in foreach avg", avg);
+      // console.log("avg", avg);
       let row = document.createElement("tr");
 
       let minPlayedCell = document.createElement("td");
